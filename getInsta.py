@@ -1,11 +1,9 @@
 import requests, json
 import keys
 
-ACCESS_TOKEN = keys.INSTA_ACCESS_TOKEN
 
-
-def getUserId(name):
-	url = "https://api.instagram.com/v1/users/search?q={name}&access_token={token}".format(name = name, token = ACCESS_TOKEN)
+def getUserId(name, token):
+	url = "https://api.instagram.com/v1/users/search?q={name}&access_token={token}".format(name = name, token = token)
 	response = requests.get(url)
 
 	if response.status_code == 200:
@@ -14,8 +12,8 @@ def getUserId(name):
 		return location_id
 	return None
 
-def getPicsOfUser(userid, count):
-	url = "https://api.instagram.com/v1/users/{id}/media/recent/?access_token={token}&count={number}".format(id = userid, number = count, token = ACCESS_TOKEN)
+def getPicsOfUser(userid, count, token):
+	url = "https://api.instagram.com/v1/users/{id}/media/recent/?access_token={token}&count={number}".format(id = userid, number = count, token = token)
 	response = requests.get(url)
 
 	picUrls = []
@@ -27,9 +25,10 @@ def getPicsOfUser(userid, count):
 	return None
 
 def main():
-    #TEST
-    userid = getUserId("jessicaalba")
-    picUrls = getPicsOfUser(userid, 25)
+	#TEST
+	ACCESS_TOKEN = keys.INSTA_ACCESS_TOKEN
+	userid = getUserId("jessicaalba", ACCESS_TOKEN)
+	picUrls = getPicsOfUser(userid, 25, ACCESS_TOKEN)
     #print picUrls
 
 if __name__ == "__main__":
