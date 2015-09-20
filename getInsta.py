@@ -5,7 +5,7 @@ ACCESS_TOKEN = keys.INSTA_ACCESS_TOKEN
 
 
 def getUserId(name):
-	url = "https://api.instagram.com/v1/users/search?q=" + name + "&access_token=" + ACCESS_TOKEN
+	url = "https://api.instagram.com/v1/users/search?q={name}&access_token={token}".format(name = name, token = ACCESS_TOKEN)
 	response = requests.get(url)
 
 	if response.status_code == 200:
@@ -15,7 +15,7 @@ def getUserId(name):
 	return None
 
 def getPicsOfUser(userid, count):
-	url = "https://api.instagram.com/v1/users/" + userid + "/media/recent/?access_token=" + ACCESS_TOKEN + "&count=" + str(count)
+	url = "https://api.instagram.com/v1/users/{id}/media/recent/?access_token={token}&count={number}".format(id = userid, number = count, token = ACCESS_TOKEN)
 	response = requests.get(url)
 
 	picUrls = []
