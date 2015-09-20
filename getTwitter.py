@@ -1,13 +1,14 @@
 from twython import Twython
-APP_KEY = 'UYG5sjOS1NVp05INMZT1Yz3q2'
-APP_SECRET = '6Sj5DlQgZTK4X88rtM4GN1qnl9wEbLHqAU8Jp3IutDd6dMJeLY'
-OAUTH_TOKEN = '301518115-hbqHTK25fwdhRQRq87d69NMp7zaFVBLk5sB9zmVh'
-OAUTH_TOKEN_SECRET = 'RwQrzZN8aHnq6Y24aUHaJmM8fOoq1M0XgWMqY0E31HbEV'
+API_KEY = 'QLnA03i5k8js1WzUDaIqGFDOr'
+API_SECRET = 'F5JvaONVQnHYeohwEUQ5i8n99x2HCrE7xl5G2ai3oQ6YNO9Tc4'
+OAUTH_TOKEN = '301518115-86uulgB7tNxnSDcsJVvRlRWKN3nn3V3ftm5EDi0t'
+OAUTH_TOKEN_SECRET = '6efj5xyl8uhdk2g0V8jp1iwdqVUHeDeoxhMDXDSL2DV0e'
 
-twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
+twitter = Twython(API_KEY, API_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
 
 try:
-    user_timeline = twitter.get_user_timeline(screen_name='pythoncentral')
+    user_timeline = twitter.get_user_timeline(screen_name='AToregozhina',
+    	count="200", include_rts="1")
 except TwythonError as e:
     print e
 
